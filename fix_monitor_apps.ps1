@@ -6,9 +6,10 @@
 # 
 #   Version    Date        Author         Change Notes
 #   0.1        2018-08-30  Eric Thomas    Initial Version 
-#   0.2        2018-09-23                 Added Support for June 2018 Data Connections + Accounts for default password change between versions 
+#   0.2        2018-09-23                 Added Support for June 2018 Data Connections + Accounts for default password change between versions
+#   0.3        2018-10-07                 Added Temporary error handling as random Red Text is scary 
 #
-#   To-Do list: Add FQDN to Archived Logs folder data connection, add error handling so unused data connection show appopriate messages 
+#   To-Do list: Add FQDN to Archived Logs folder data connection
 #
 #------------------------------------------------------------------------------------------------------------------------------
 
@@ -37,6 +38,10 @@ $FQDN = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64Strin
 $response = Read-host "Please enter a password that will be used for Client Certificate Authentication" -AsSecureString
 $passwordCert = New-Object System.Net.NetworkCredential("Blank",$response)
 
+#Disabling Errors here as Red Text is scary and tells us "The file already exists" or 
+# that a data connection could not be found 
+$ErrorActionPreference = "SilentlyContinue"
+
 #Export the Certificate
 #--------------------------------------
 $certBody = '{  
@@ -57,8 +62,6 @@ Move-Item -Path C:\ProgramData\Qlik\Sense\Repository\"Exported Certificates"\$($
 
 #Rename Data Connections
 #--------------------------------------
-#
-#Really should try to loop through this as improvement
 #
 
 #Monitor_apps_rest_app
@@ -163,7 +166,6 @@ $RESTuserDC = $RESTuserDC | ConvertTo-Json
 $RESTuserDC = $RESTuserDC -replace "monitor_apps_REST_user", "monitor_apps_REST_user-old"
 Invoke-RestMethod -Uri "https://$($FQDN):4242/qrs/dataconnection/$($RESTuserID)?xrfkey=NzU0NTIwMDAwNTIy" -Method Put -Headers $headers -ContentType 'application/json' -Certificate $cert -Body $RESTuserDC
 #--------------------------------------
-
 
 #Upload Operations Monitor
 #--------------------------------------
