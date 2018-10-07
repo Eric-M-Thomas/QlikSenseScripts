@@ -7,7 +7,7 @@
 #   Version    Date        Author         Change Notes
 #   0.1        2018-08-30  Eric Thomas    Initial Version 
 #   0.2        2018-09-23                 Added Support for June 2018 Data Connections + Accounts for default password change between versions
-#   0.3        2018-10-07                 Added Temporary error handling as random Red Text is scary 
+#   0.3        2018-10-07                 Added Temporary error handling as Red Text is scary 
 #
 #   To-Do list: Add FQDN to Archived Logs folder data connection
 #
