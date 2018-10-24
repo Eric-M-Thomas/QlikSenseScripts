@@ -7,8 +7,12 @@
 #   Version    Date        Author         Change Notes
 #   0.1        2018-08-30  Eric Thomas    Initial Version 
 #   0.2        2018-09-23                 Added Support for June 2018 Data Connections + Accounts for default password change between versions
+<<<<<<< HEAD
 #   0.3        2018-10-07                 Added Temporary error handling as random Red Text is scary 
 #   0.4        2018-10-24                 Change Data Connection updates from a 'Find/Replace' to directly updating the JSON Object value
+=======
+#   0.3        2018-10-07                 Added Temporary error handling as Red Text is scary 
+>>>>>>> 7826e2bc786e80da44f39c93e6c0938420ac20ca
 #
 #   To-Do list: Add FQDN to Archived Logs folder data connection
 #
