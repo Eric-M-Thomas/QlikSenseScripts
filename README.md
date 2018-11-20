@@ -13,4 +13,4 @@ If you would like to use this script, download and run as your Qlik Sense Servic
 Nothing is deleted by running this script only renamed. If you would like to revert back prior to running the script, just swap the Data connections back.
  
 Additional considerations:
-In multi-node environment where the central node does not perform reloads, the certificate generated will have to be moved to the corresponding folders on the other nodes: By Default, [ProgramData]\Qlik\Sense\Engine\Certificates\<Central Node Name> (keep the folder name the same)
+In multi-node environments where the central node does not perform reloads, the certificate generated will have to be moved to the corresponding folders on the other nodes: By Default, [ProgramData]\Qlik\Sense\Engine\Certificates\<Central Node Name> (keep the folder name the same)
