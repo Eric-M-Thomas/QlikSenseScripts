@@ -9,6 +9,7 @@
 #   0.2        2018-09-23                 Added Support for June 2018 Data Connections + Accounts for default password change between versions
 #   0.3        2018-10-07                 Added Temporary error handling as random Red Text is scary 
 #   0.4        2018-10-24                 Changed Data Connection updates from a 'Find/Replace' to directly updating the JSON Object value
+#   0.5        2018-12-13                 Updated the handling of Certificates in scenarios where they have already been exported (Script ran previously)
 #
 #   To-Do list: Add FQDN to Archived Logs folder data connection
 #
@@ -58,7 +59,12 @@ Invoke-RestMethod -Uri "https://$($FQDN):4242/qrs/CertificateDistribution/export
 
 #Move the Certifcate for the REST Connector
 #--------------------------------------
-Move-Item -Path C:\ProgramData\Qlik\Sense\Repository\"Exported Certificates"\$($FQDN) -Destination C:\ProgramData\Qlik\Sense\Engine\Certificates
+if (Test-Path C:\ProgramData\Qlik\Sense\Engine\Certificates\$($FQDN)) {
+    Remove-Item -Path C:\ProgramData\Qlik\Sense\Engine\Certificates\$($FQDN) -Recurse -Force
+    Move-Item -Path C:\ProgramData\Qlik\Sense\Repository\"Exported Certificates"\$($FQDN) -Destination C:\ProgramData\Qlik\Sense\Engine\Certificates\$($FQDN)
+} else {
+    Move-Item -Path C:\ProgramData\Qlik\Sense\Repository\"Exported Certificates"\$($FQDN) -Destination C:\ProgramData\Qlik\Sense\Engine\Certificates\$($FQDN)
+}
 
 
 #Rename Data Connections
