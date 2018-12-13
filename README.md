@@ -10,7 +10,7 @@ If you would like to use this script, download and run as your Qlik Sense Servic
 
 • The Operations Monitor and License Monitor will be imported to recreate the data connections named Operations Monitor-New etc. (they can also be used to test if the issue was with the currently published apps) 
 
-• The Data Connections will be modifed to use certificate authorization instead of Windows Authentication (This will create a password protected Certificate at [ProgramData]\Qlik\Sense\Engine\Certificates using the name of the Central Node) - You will need to delete this folder if the script is ever ran again.
+• The Data Connections will be modified to use certificate authorization instead of Windows Authentication (This will create a password protected Certificate at [ProgramData]\Qlik\Sense\Engine\Certificates using the name of the Central Node) - You will need to delete this folder if the script is ever ran again.
  
 Nothing is deleted by running this script only renamed. If you would like to revert back prior to running the script, just swap the Data connections back.
  
