@@ -12,7 +12,7 @@ If you would like to use this script, download and run as your Qlik Sense Servic
 
 • The Data Connections will be modified to use certificate authorization instead of Windows Authentication (This will create a password protected Certificate at [ProgramData]\Qlik\Sense\Engine\Certificates using the name of the Central Node)
  
-Nothing is deleted by running this script only renamed. If you would like to revert back prior to running the script, just swap the Data connections back.
+Nothing is deleted by running this script only renamed. If you would like to revert back prior to running the script, just swap the Data connections back in the QMC (they have -old appended to them).
  
 Additional considerations:
 In multi-node environments where the central node does not perform reloads, the certificate generated will have to be moved to the corresponding folders on the other nodes: By Default, [ProgramData]\Qlik\Sense\Engine\Certificates\Central Node Name (keep the folder name the same)
